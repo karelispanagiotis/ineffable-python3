@@ -5,4 +5,4 @@ unzip master.zip
 rm master.zip
 mv silap-ineffable-*/* .
 rm -r silap-ineffable-*/
-ln -s ineffable /usr/local/bin/ineffable
+sudo ln -s ~/.ineffable/ineffable /usr/local/bin/ineffable

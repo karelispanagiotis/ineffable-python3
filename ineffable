@@ -98,7 +98,7 @@ if h.warmup is not None:
   try:
     subprocess.check_output(['/bin/sh', '-c', h.warmup])
     if options['warmup']: # just warmup, and that's all
-      print Rbow.c(Rbow.GREEN, 'It\'s already warm in here :P') + '\n'
+      print Rbow.c(Rbow.GREEN, 'Warmup successful!') + '\n'
       sys.exit()
   except Exception as e:
     print Rbow.c(Rbow.RED, '\nArrgh!!! Warmup command exited with non-zero ( %s ) code\n' % (e.returncode))
