@@ -1,6 +1,6 @@
 mkdir ~/.ineffable
 cd ~/.ineffable
-wget https://bitbucket.org/silap/ineffable/get/master.zip
+wget https://bitbucket.org/silap/ineffable/downloads/ineffable-1.0.zip
 unzip master.zip
 rm master.zip
 mv silap-ineffable-*/* .
