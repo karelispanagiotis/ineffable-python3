@@ -1,4 +1,4 @@
-<center> <img src="http://codeforces.com/predownloaded/f4/3d/f43d1d912eca2f8c25b30418f592eb7717eaf88f.png"> </center>
+![ ](http://codeforces.com/predownloaded/f4/3d/f43d1d912eca2f8c25b30418f592eb7717eaf88f.png)
 
 # What is ineffable?
 
