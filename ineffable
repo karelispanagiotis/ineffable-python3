@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, os, subprocess, md5, random, math
+import sys, os, subprocess, hashlib, random, math
 from IneffableHelper import *
 from Rbow import *
 
@@ -134,7 +134,9 @@ if h.warmup is not None:
         print("Verdict: %s" % (Rbow.c(Rbow.WE, "Warmup Error")))
         sys.exit()
 
-foo = os.path.join(h.configdir, h.tstdir, md5.new("omgomgomg").hexdigest())
+foo = os.path.join(
+    h.configdir, h.tstdir, hashlib.md5("omgomgomg".encode("utf-8")).hexdigest()
+)
 
 if h.iopairs is not None:
     width = 0
