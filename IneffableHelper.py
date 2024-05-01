@@ -22,7 +22,7 @@ class IneffableHelper:
 
   def _cook_config(self):
     if 'execute' not in self.rawconfig:
-      print Rbow.c(Rbow.RED, '\nArrgh!!! No \'execute\' parameter found in config file\n')
+      print(Rbow.c(Rbow.RED, '\nArrgh!!! No \'execute\' parameter found in config file\n'))
       sys.exit()
     else:
       self.execute = self.rawconfig['execute']
@@ -35,10 +35,10 @@ class IneffableHelper:
     self.tstdir = self.rawconfig['tstdir'] if 'tstdir' in self.rawconfig else '.'
 
     if self.tl is not None and not isinstance(self.tl, int):
-      print Rbow.c(Rbow.RED, '\nArrgh!!! \'tl\' is not an integer\n')
+      print(Rbow.c(Rbow.RED, '\nArrgh!!! \'tl\' is not an integer\n'))
       sys.exit()
     if self.ml is not None and not isinstance(self.ml, int):
-      print Rbow.c(Rbow.RED, '\nArrgh!!! \'ml\' is not an integer\n')
+      print(Rbow.c(Rbow.RED, '\nArrgh!!! \'ml\' is not an integer\n'))
       sys.exit()
 
     if self.pbcode is not None:
@@ -49,7 +49,7 @@ class IneffableHelper:
         self.tstdir = self.tstdir.replace('{PROBLEM}', self.pbcode)
 
     if 'iopairs' not in self.rawconfig and ('inp' not in self.rawconfig or 'out' not in self.rawconfig):
-      print Rbow.c(Rbow.RED, '\nArrgh!!! No \'iopairs\' or (\'inp\', \'out\') parameter(s) found in config file\n')
+      print(Rbow.c(Rbow.RED, '\nArrgh!!! No \'iopairs\' or (\'inp\', \'out\') parameter(s) found in config file\n'))
       sys.exit()
     else:
       self.inp = None
@@ -64,10 +64,10 @@ class IneffableHelper:
           self.out = self.out.replace('{PROBLEM}', self.pbcode)
 
 	if self.inp.find('**') != -1 or self.out.find('**') != -1:
-          print Rbow.c(Rbow.RED, '\nArrgh!!! \'inp\' and/or \'out\' should not contain two consecutive \'*\' wildchars\n')
+          print(Rbow.c(Rbow.RED, '\nArrgh!!! \'inp\' and/or \'out\' should not contain two consecutive \'*\' wildchars\n'))
           sys.exit()
 	if self.inp.count('*') > self.out.count('*'):
-          print Rbow.c(Rbow.RED, '\nArrgh!!! Number of \'*\' wildchars of \'out\' is less than that of \'inp\'\n')
+          print(Rbow.c(Rbow.RED, '\nArrgh!!! Number of \'*\' wildchars of \'out\' is less than that of \'inp\'\n'))
           sys.exit()
 
 	self.iopairs = {}
@@ -78,10 +78,10 @@ class IneffableHelper:
 
     if len(self.iopairs) == 2 and 'inp' in self.iopairs and 'out' in self.iopairs:
       if len(self.iopairs['inp']) != len(self.iopairs['out']):
-        print Rbow.c(Rbow.RED, '\nHeyyy!!! Number of input and output files specified in config file do not match\n')
+        print(Rbow.c(Rbow.RED, '\nHeyyy!!! Number of input and output files specified in config file do not match\n'))
       foo = {}
       ntests = min(len(self.iopairs['inp']), len(self.iopairs['out']))
-      for i in xrange(ntests):
+      for i in range(ntests):
         foo[ self.iopairs['inp'][i] ] = self.iopairs['out'][i]
       self.iopairs = foo.copy()
 
@@ -104,7 +104,7 @@ class IneffableHelper:
     if self.inp[-1] == '*':
       kwds = kwds[:-1]
 
-    for i in xrange(1, len(kwds)):
+    for i in range(1, len(kwds)):
       idx = filename.find(kwds[i], lst+1)
 
       if idx == -1:
@@ -128,7 +128,7 @@ class IneffableHelper:
     kwds = self.out.split('*')
     ret = kwds[0]
 
-    for i in xrange(1, len(kwds)):
+    for i in range(1, len(kwds)):
       ret += params[i-1] + kwds[i]
     
     return ret
