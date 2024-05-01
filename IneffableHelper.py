@@ -75,27 +75,27 @@ class IneffableHelper:
                     self.inp = self.inp.replace("{PROBLEM}", self.pbcode)
                     self.out = self.out.replace("{PROBLEM}", self.pbcode)
 
-    if self.inp.find("**") != -1 or self.out.find("**") != -1:
-        print(
-            Rbow.c(
-                Rbow.RED,
-                "\nArrgh!!! 'inp' and/or 'out' should not contain two consecutive '*' wildchars\n",
+        if self.inp.find("**") != -1 or self.out.find("**") != -1:
+            print(
+                Rbow.c(
+                    Rbow.RED,
+                    "\nArrgh!!! 'inp' and/or 'out' should not contain two consecutive '*' wildchars\n",
+                )
             )
-        )
-        sys.exit()
-    if self.inp.count("*") > self.out.count("*"):
-        print(
-            Rbow.c(
-                Rbow.RED,
-                "\nArrgh!!! Number of '*' wildchars of 'out' is less than that of 'inp'\n",
+            sys.exit()
+        if self.inp.count("*") > self.out.count("*"):
+            print(
+                Rbow.c(
+                    Rbow.RED,
+                    "\nArrgh!!! Number of '*' wildchars of 'out' is less than that of 'inp'\n",
+                )
             )
-        )
-        sys.exit()
+            sys.exit()
 
-    self.iopairs = {}
-    self._init_iopairs()
-    if self.iopairs is None:
-        self.iopairs = self.rawconfig["iopairs"]
+        self.iopairs = {}
+        self._init_iopairs()
+        if self.iopairs is None:
+            self.iopairs = self.rawconfig["iopairs"]
 
         if len(self.iopairs) == 2 and "inp" in self.iopairs and "out" in self.iopairs:
             if len(self.iopairs["inp"]) != len(self.iopairs["out"]):
