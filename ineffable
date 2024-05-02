@@ -165,7 +165,7 @@ if h.iopairs is not None:
                     ),
                 ],
                 stderr=subprocess.STDOUT,
-            )
+            ).decode()
         except Exception as e:
             runtime_error = True
             limiter_output = e.output
@@ -186,7 +186,7 @@ if h.iopairs is not None:
                     diff_output = subprocess.check_output(
                         ["sh", "-c", "diff -bB {} {}".format(h.tstdir + out, foo)],
                         stderr=subprocess.STDOUT,
-                    )[:-1]
+                    ).decode()[:-1]
                 except Exception as e:
                     identical = False
                     diff_output = e.output
@@ -203,7 +203,7 @@ if h.iopairs is not None:
                                 inp,
                                 subprocess.check_output(
                                     ["tail", os.path.join(h.configdir, h.tstdir, inp)]
-                                ),
+                                ).decode(),
                             )
                         )
                         print("### Checker output:\n" + diff_output + "\n")
